@@ -108,12 +108,14 @@ const checkPin = (...code) => code.join('') === EXPECTED_PIN;
 
 //const press = null;
 const press =(args)=>({
+  value:args,
   steps:[args],
-  press (value){
+  press (arg2){
+    this.value+=arg2;
     this.steps.push(value);
-    if (this.steps.length === 4){
-      return checkPin();
-    }
+//    if (this.steps.length === 4){
+//      return checkPin();
+//    }
     return this;
   } 
 });
