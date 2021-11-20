@@ -1,17 +1,18 @@
 'use strict';
 
-process.on('uncaughtException', (err) => {
-    console.log('on uncaughtException: ' + err.message);
-  //  process.exit(1);
-  });
-  
-  const sum = (a, b) => {
-    if (typeof a === 'number' && typeof b === 'number') {
-      return a + b;
-    }
-    throw new Error('a and b should be numbers');
-  };
-  
-  console.log(sum(2, 3));
-  console.log(sum(7, 'A'));
-  console.log('Misha');
+/*
+const sleep = (msec) => {
+  const end = new Date().getTime() + msec;
+  while (new Date().getTime() < end);
+};
+
+console.log('Start sleep: ' + new Date().toISOString());
+console.log('  Sleep about 3 sec');
+sleep(3000);
+console.log('After sleep: ' + new Date().toISOString());
+*/
+const myFish=['angel','clown','mandarin','sturgeon'];
+//let ran=myFish.splice (2,2,'drum');
+myFish.splice (2,1,'drum');
+console.log(myFish);
+//console.log(ran);
