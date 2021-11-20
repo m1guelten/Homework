@@ -1,28 +1,37 @@
 'use strict';
-/*
-const removeElements = (array, ...items) => {
-  for (const item of items){
-    const index = array.indexOf(item);
-    if (index !== -1) array.splice(index, 1);
+
+const fs = require('fs');
+
+const getDataset = (file) => {
+  const lines = fs.readFileSync(file, 'utf8').split('\n');
+  lines.shift();
+//  console.log (lines);
+  lines.pop();
+ // console.log (lines);
+  return lines.map((line) => line.split(','));
+};
+
+const buildIndex = (ds, col) => {
+  const index = new Map();
+  for (const record of ds) {
+    index.set(record[col], record);
   }
+  return index;
 };
 
-const array = ['Kiev', 'Beijing', 'Lima', 'Saratov'];
-removeElements(array, 'Lima', 'Berlin', 'Kiev');
-console.log(array);
-// Результат: ['Beijing', 'Saratov']
-*/
+// Usage
 
-// Don't modify initial array
+const dataset = getDataset('./cities.csv');
+console.log(dataset);
 
-const unique = (array) => {
-  const newArr = [];
-  for (const item of array) {
-    if (!newArr.includes(item)) {
-      newArr.push(item);
-    };
-  };
-  return newArr;
-};
+const byName = buildIndex(dataset, 0);
+console.log(byName);
 
-const difference = (array1, array2) => [];
+const byPopulation = buildIndex(dataset, 1);
+console.log(byPopulation);
+
+const delhi = byName.get('Delhi');
+console.log(delhi);
+
+const record = byPopulation.get('21516000');
+console.log(record);
