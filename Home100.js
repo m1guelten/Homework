@@ -1,18 +1,28 @@
 'use strict';
-
 /*
-const sleep = (msec) => {
-  const end = new Date().getTime() + msec;
-  while (new Date().getTime() < end);
+const removeElements = (array, ...items) => {
+  for (const item of items){
+    const index = array.indexOf(item);
+    if (index !== -1) array.splice(index, 1);
+  }
 };
 
-console.log('Start sleep: ' + new Date().toISOString());
-console.log('  Sleep about 3 sec');
-sleep(3000);
-console.log('After sleep: ' + new Date().toISOString());
+const array = ['Kiev', 'Beijing', 'Lima', 'Saratov'];
+removeElements(array, 'Lima', 'Berlin', 'Kiev');
+console.log(array);
+// Результат: ['Beijing', 'Saratov']
 */
-const myFish=['angel','clown','mandarin','sturgeon'];
-//let ran=myFish.splice (2,2,'drum');
-myFish.splice (2,1,'drum');
-console.log(myFish);
-//console.log(ran);
+
+// Don't modify initial array
+
+const unique = (array) => {
+  const newArr = [];
+  for (const item of array) {
+    if (!newArr.includes(item)) {
+      newArr.push(item);
+    };
+  };
+  return newArr;
+};
+
+const difference = (array1, array2) => [];
