@@ -5,9 +5,6 @@ const fs = require('fs');
 const getDataset = (file) => {
   const lines = fs.readFileSync(file, 'utf8').split('\n');
   lines.shift();
-//  console.log (lines);
-  lines.pop();
- // console.log (lines);
   return lines.map((line) => line.split(','));
 };
 
@@ -21,9 +18,9 @@ const buildIndex = (ds, col) => {
 
 // Usage
 
-const dataset = getDataset('./cities.csv');
-console.log(dataset);
-
+const dataset = getDataset('/home/m1guelten/MyProg/cities.csv');
+console.log(dataset[0]);
+console.log(dataset[dataset.length-1]);
 const byName = buildIndex(dataset, 0);
 console.log(byName);
 
