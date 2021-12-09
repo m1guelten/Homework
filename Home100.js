@@ -1,34 +1,49 @@
 'use strict';
 
-const fs = require('fs');
+//#1
+const inc = x => ++x;
+const twice = x => x * 2;
+const cube = x => x ** 3;
 
-const getDataset = (file) => {
-  const lines = fs.readFileSync(file, 'utf8').split('\n');
-  lines.shift();
-  return lines.map((line) => line.split(','));
-};
 
-const buildIndex = (ds, col) => {
-  const index = new Map();
-  for (const record of ds) {
-    index.set(record[col], record);
+const pipe = (...fns) => {
+  for (const f of fns) {
+    if (typeof f !== 'function') {
+      throw new Error('Argument is not function');
+    }
   }
-  return index;
+  return x => fns.reduce((v, f) => f(v), x);
 };
 
-// Usage
 
-const dataset = getDataset('/home/m1guelten/MyProg/cities.csv');
-console.log(dataset[0]);
-console.log(dataset[dataset.length-1]);
-const byName = buildIndex(dataset, 0);
-console.log(byName);
 
-const byPopulation = buildIndex(dataset, 1);
-console.log(byPopulation);
+const f = pipe(inc,twice,cube);
+const f2 = pipe(inc,inc);
+const f3 = pipe(inc,7,cube);
+console.log(`pipe(inc,twice,cube)= ${f(5)}`);
+console.log(`pipe(inc,inc)= ${f2(7)}`);
+//console.log(`pipe(inc,7,cube)= ${f3(9)}`);
 
-const delhi = byName.get('Delhi');
-console.log(delhi);
-
-const record = byPopulation.get('21516000');
-console.log(record);
+//#2
+const compose = (...fns) => {
+  const handlers = {};
+  const comp = x => {
+    if (fns.length === 0) {
+      return x;
+    }
+    let res = x;
+    try {
+      for (let i = (fns.length -1); i >= 0; i--) {
+        res = fns[i](res);
+      }
+      return res;
+    } 
+    catch (error) {
+    handlers.error=error;
+    }    
+  };
+  comp.on = (name) => {
+    if (name === 'error'){return handlers.error};
+  }
+  return comp;
+};
