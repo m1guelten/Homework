@@ -1,9 +1,8 @@
 'use strict';
 
 const name = 'James';
-for(let i=0;i<5;i++)
-{
-  const d=i+3
+for (let i = 0; i < 5; i++) {
+  let d = i + 3;
 }
 const person = { first: name };
 
