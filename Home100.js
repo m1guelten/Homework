@@ -1,7 +1,10 @@
 'use strict';
 
 const name = 'James';
-
+for(let i=0;i<5;i++)
+{
+  const d=i+3
+}
 const person = { first: name };
 
 console.log(person);
