@@ -1,12 +1,11 @@
 {
-    "plugins": ["prettier"],
+   
     "env": {
       "browser": true,
       "es6": true,
       "node": true
     },
-    "extends": ["eslint:recommended",
-    "prettier:recommended"],
+    "extends": "eslint:recommended",
     "parserOptions": {
       "ecmaVersion": 2020
     },
