@@ -214,8 +214,7 @@
         "error"
       ],
       "arrow-parens": [
-        "error",
-        "as-needed"
+        "error"
       ],
       "arrow-body-style": [
         "error",
