@@ -1,23 +1,18 @@
 'use strict'
 
-// Get day number
+// Filter array by type name
 
-let week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
- dayNumber= day =>{
-  for(let i=0;i<week.length;i++){
-    const dayLowerCase = day.toLowerCase();
-    if(dayLowerCase.startsWith(week[i].toLowerCase())){
-      return ++i;
+const filter =(arr,type)=> {
+  for (let i=0; i<arr.length; i++) {
+    if (typeof arr[i] !== type){
+      arr.splice(i, 1);
+      i--;
     };
   };
-  return -1;
+  return arr;
 };
-
-console.log(dayNumber ('sunday'));
-console.log(dayNumber ('Friday'));
-console.log(dayNumber ('fri'));
-console.log(dayNumber ('frid'));
-console.log(dayNumber ('fr'));
-console.log(dayNumber ('friday'));
-console.log(dayNumber ('friday'));
+ 
+//const result = filter();
+console.log(filter([1, 2, 'three', 4, 5, 'six'], 'string'));
+console.log(filter([1, 2, 'three', 4, 5, 'six'], 'number'));
+  
