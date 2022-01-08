@@ -1,13 +1,9 @@
-'use strict'
+'use strict';
 
-var foo = 1
-console.log(foo)./node_modules/.bin/eslint --init
-var bar
-bar = 1
-function test(
-
-
-    ) {
-  console.log(baz)
+const foo = 1;
+console.log(foo);
+const bar = 1;
+function test(value) {
+  console.log(value);
 }
-var baz = 123
+test(bar);
