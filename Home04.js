@@ -1,22 +1,29 @@
 'use strict';
 
-const array = () => {
-  const data = [];
-  let get = (i) => data[i];
-  get.push = (x) => data.push(x);
-  get.pop = () => data.pop();
-  // get.nach = (x) => data.unshift(x);
-  return get;
+/*const powr = (x, n) => {
+  let i = -1;
+  console.log(`i= ${i}, x= ${x}, n= ${n}`);
+  if (n === 0) {
+    i = 1;
+  } else {
+    i = x * powr(x, n - 1);
+
+    console.log(`!!!i= ${i}, x= ${x}, n= ${n}`);
+  }
+  return i;
+};*/
+const powr2 = (x, n, p=1) => {
+  let i = -1;
+  //let p = 1;
+  console.log(`i= ${i}, x= ${x}, n= ${n}, p= ${p}`);
+  if (n === 0) {
+    i = p;
+  } else {
+    p *= x;
+    i = powr2(x, n - 1, p);
+
+    console.log(`!!!i= ${i}, x= ${x}, n= ${n}, p= ${p}`);
+  }
+  return i;
 };
-
-const arr2 = array();
-arr2.push('first');
-console.dir(arr2(0), arr2(1), arr2(2));
-arr2.push('second');
-console.dir(arr2(0), arr2(1), arr2(2));
-arr2.push('third');
-console.dir(arr2(0), arr2(1), arr2(2));
-arr2.pop();
-console.dir(arr2(0), arr2(1), arr2(2));
-
-console.dir(arr2);
+console.log(powr2(5, 4));
