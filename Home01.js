@@ -1,16 +1,33 @@
 'use strict';
-const data = ['abc', 'defg', 'hijklmn', 'opqrst', 'u', 'v', 'xyz'];
 
-function testIndexOf() {
-  return [
-    data.indexOf('opqrst') !== -1,
-    data.indexOf('qwerty') !== -1,
-    data.indexOf('v') !== -1,
-  ];
-}
-console.log(testIndexOf());
-//**************************************************
-function testIncludes() {
-  return [data.includes('opqrst'), data.includes('qwerty'), data.includes('v')];
-}
-console.log(testIncludes());
+// const ground = new Image();
+// ground.src = 'img/chess.jpg';
+// const dices0 = new Image();
+// dices0.src = 'img/dices.png';
+
+const loadImages = (imageFiles) => {
+  const images = new Map();
+  for (const fileName of imageFiles) {
+    const [name] = fileName.split('.');
+    const image = 'img/' + fileName;//new Image();
+   // image.src=
+    images.set(name, image);
+  }
+  return images;
+};
+
+const spriteFiles = [
+  'chess.jpg',
+  'dices0.png',
+  'dices1.png',
+  'dices2.png',
+  'dices3.png',
+  'dices4.png',
+  'dices5.png',
+  'dices6.png',
+  'checkersBlack.png',
+  'checkersWhite.png',
+];
+const step=3;
+const sprites = loadImages(spriteFiles);
+console.log(sprites.get(`dices${step}`));

@@ -12,7 +12,7 @@
   }
   return i;
 };*/
-const powr2 = (x, n, p=1) => {
+const powr2 = (x, n, p = 1) => {
   let i = -1;
   //let p = 1;
   console.log(`i= ${i}, x= ${x}, n= ${n}, p= ${p}`);
